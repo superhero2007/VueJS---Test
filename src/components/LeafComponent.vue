@@ -1,5 +1,5 @@
 <template>
-  <canvas width="15" height="15" class="leaf" @click="clicked"></canvas>
+  <canvas width="20" height="20" class="leaf" @click="clicked"></canvas>
 </template>
 <script>
 export default {
@@ -13,13 +13,13 @@ export default {
         var leaf = leafs[i]
         var leafCtx = leaf.getContext('2d')
         leafCtx.fillStyle = 'rgb(46, 138, 227)'
-        leafCtx.clearRect(0, 0, 15, 15)
-        leafCtx.fillRect(0, 0, 15, 15)
-        leafCtx.moveTo(3, 8)
-        leafCtx.lineTo(13, 8)
-        leafCtx.moveTo(8, 3)
-        leafCtx.lineTo(8, 13)
-        leafCtx.lineWidth = 1
+        leafCtx.clearRect(0, 0, 20, 20)
+        leafCtx.fillRect(0, 0, 20, 20)
+        leafCtx.moveTo(3, 10)
+        leafCtx.lineTo(17, 10)
+        leafCtx.moveTo(10, 3)
+        leafCtx.lineTo(10, 17)
+        leafCtx.lineWidth = 2
         leafCtx.strokeStyle = 'white'
         leafCtx.stroke()
       }

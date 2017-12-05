@@ -18,7 +18,7 @@ export default {
 }
 .condition {
   margin-bottom: -13px;
-  margin-top: 13px;
+  margin-top: 5px;
 }
 canvas {
   margin: 0 auto;
@@ -30,11 +30,11 @@ canvas {
 .leftChild {
   position: absolute;
   width: 50%;
-  left: 4px;
+  left: 5px;
 }
 .rightChild {
   position: absolute;
   width: 50%;
-  right: 11px;
+  right: 10px;
 }
 </style>

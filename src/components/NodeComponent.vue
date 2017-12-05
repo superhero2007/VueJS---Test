@@ -83,7 +83,7 @@ export default {
       ctx.arcTo(width / 4 + 5, 25, width / 4 + 5, 50, 10)
       ctx.lineTo(width / 4 + 5, 73)
 
-      ctx.lineWidth = 3
+      ctx.lineWidth = 2
       ctx.strokeStyle = 'gray'
       ctx.stroke()
 

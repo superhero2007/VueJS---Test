@@ -21,7 +21,7 @@ export default {
 
         ctx.moveTo(width / 2, 45)
         ctx.lineTo(width / 2, 73)
-        ctx.lineWidth = 3
+        ctx.lineWidth = 2
         ctx.strokeStyle = 'gray'
         ctx.stroke()
 
@@ -59,7 +59,7 @@ export default {
 }
 .action {
   margin-bottom: -13px;
-  margin-top: 13px;
+  margin-top: 5px;
 }
 canvas {
   margin: 0 auto;
@@ -67,15 +67,5 @@ canvas {
 }
 .children {
   text-align: start;
-}
-.leftChild {
-  position: absolute;
-  width: 50%;
-  left: 4px;
-}
-.rightChild {
-  position: absolute;
-  width: 50%;
-  right: 11px;
 }
 </style>

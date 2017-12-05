@@ -2,7 +2,6 @@
   <div id="container" v-bind:style="{ width: width + 'px' }">
     <div class="download">
       <button @click="download">Save</button>
-      <a id="downloadAnchorElem" style="display:none"></a>
     </div>
     <node-component :value="1" :arr="arr" @adding="adding" :height="0">
     </node-component>
@@ -34,52 +33,45 @@ export default {
     },
     adding (value, height) {
       var modal = document.getElementById('modalBox')
-      modal.style.left = window.scrollX + window.innerWidth / 2 - 150 + 'px'
+      modal.style.left = window.scrollX + window.innerWidth / 2 - 200 + 'px'
       modal.style.top = window.scrollY + window.innerHeight / 10 * 3 + 'px'
       this.addingValue = value
       this.height = height
     },
     download () {
-      var storageObj = {
+      var jsonObj = {
         name: '',
-        left: {},
-        right: {}
+        leftChild: {},
+        rightChild: {}
       }
       for (var i = 1; i < this.arr.length; i++) {
         if (this.arr[i] !== 1 && this.arr[i] !== 2) {
           continue
         }
-        var startObj = storageObj
+        var startObj = jsonObj
         var index = i
+        var temp = []
         while (index > 1) {
-          if (index % 2 === 0) {
-            startObj = startObj['left']
-            if (typeof (startObj['name']) === 'undefined') {
-              startObj['name'] = ''
-              startObj['left'] = {}
-              startObj['right'] = {}
-            }
-          } else {
-            startObj = startObj['right']
-            if (typeof (startObj['name']) === 'undefined') {
-              startObj['name'] = ''
-              startObj['left'] = {}
-              startObj['right'] = {}
-            }
-          }
+          temp.push(index % 2)
           index = Math.floor(index / 2)
+        }
+        while (temp.length) {
+          index = temp.pop()
+          if (index % 2 === 0) {
+            startObj = startObj['leftChild']
+          } else {
+            startObj = startObj['rightChild']
+          }
         }
         if (this.arr[i] === 1) {
           startObj['name'] = 'Condition'
         } else if (this.arr[i] === 2) {
           startObj['name'] = 'Action'
         }
+        startObj['leftChild'] = {}
+        startObj['rightChild'] = {}
       }
-      var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(storageObj))
-      var dlAnchorElem = document.getElementById('downloadAnchorElem')
-      dlAnchorElem.setAttribute('href', dataStr)
-      dlAnchorElem.setAttribute('download', 'data.json')
-      dlAnchorElem.click()
+      console.log(jsonObj)
     }
   },
   data () {
@@ -101,8 +93,8 @@ export default {
 #modalBox {
   position: absolute;
   top: 30%;
-  left: calc(50% - 150px);
-  width: 300px;
+  left: calc(50% - 200px);
+  width: 400px;
   box-shadow: 0px 0px 15px 2px #ccc;
   padding: 10px;
   background: white;
